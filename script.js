@@ -9,11 +9,11 @@ giftWrap.addEventListener("touchstart", unwrapGift);
 
 function unwrapGift() {
     // Remove the gift wrap
-    giftWrap.classList.add("hidden");
+    giftWrap.style.display = "none";
 
     // Show the letter
     letterContainer.classList.remove("hidden");
 
-    // Play music
+    // Play background music
     backgroundMusic.play();
 }
