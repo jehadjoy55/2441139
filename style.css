@@ -75,7 +75,6 @@ body, html {
 .hidden {
     display: none;
 }
-
 #letterContainer {
     padding: 20px;
     text-align: justify;
