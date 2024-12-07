@@ -8,10 +8,11 @@ const lace = document.getElementById("lace");
 let startX = 0;
 let endX = 0;
 
-// Play music in loop
+// Ensure music plays after user interaction
 backgroundMusic.loop = true;
+backgroundMusic.load();
 
-// Start swipe detection
+// Start swipe detection for touch devices
 lace.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
 });
@@ -41,6 +42,20 @@ function unwrapGift() {
         }, 500);
     }, 1000);
 
-    // Play background music
-    backgroundMusic.play();
+    // Play background music with a fallback for mobile
+    playBackgroundMusic();
+}
+
+// Play music function
+function playBackgroundMusic() {
+    const playPromise = backgroundMusic.play();
+    if (playPromise !== undefined) {
+        playPromise
+            .then(() => {
+                console.log("Music is playing!");
+            })
+            .catch((error) => {
+                console.error("Music playback failed:", error);
+            });
+    }
 }
